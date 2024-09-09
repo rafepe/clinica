@@ -1,7 +1,7 @@
 import django_tables2 as tables
 from django_tables2.utils import A
 from django.utils.html import format_html
-from .models import paciente, funcionario, medico, procedimento
+from .models import paciente, funcionario, medico, procedimento, procedimento_executado
 
 class paciente_table(tables.Table):
     nome = tables.LinkColumn("paciente_update", args=[A("pk")])
@@ -75,7 +75,7 @@ class procedimento_executado_table(tables.Table):
     id = tables.LinkColumn("procedimento_executado_delete", args=[A("pk")], verbose_name="Excluir")
 
     class Meta:
-        model = procedimento
+        model = procedimento_executado
         attrs = {"class": "table thead-light table-striped table-hover"}
         template_name = "django_tables2/bootstrap4.html"
         fields = ('data','paciente','medico','procedimento','obs','quantidade')
