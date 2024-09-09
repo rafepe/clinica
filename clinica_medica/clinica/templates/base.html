@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<html lang="pt-br">
+
+<head>
+    <title>
+        {% block titulo %}{% endblock %}
+    </title>
+</head>
+
+<body>
+
+    <div class="d-flex justify-content-center align-items-start">
+        <div class="text-center mx-2">
+            <a href="{% url 'paciente_menu' %}">
+                <p>Pacientes</p>
+                <img src="{% static 'pacientes.png' %}" class="img-fluid" alt="Pacientes" style="height: 120px;">
+            </a>
+        </div>
+
+        <div class="text-center mx-2">
+            <a href="{% url 'funcionario_menu' %}">
+                <p>Funcionários</p>
+                <img src="{% static 'funcionarios.png' %}" class="img-fluid" alt="Funcionários" style="height: 120px;">
+            </a>
+        </div>
+
+        <div class="text-center mx-2">
+            <a href="{% url 'medico_menu' %}">
+                <p>Médicos</p>
+                <img src="{% static 'medicos.png' %}" class="img-fluid" alt="Médicos" style="height: 120px;">
+            </a>
+        </div>
+
+        <div class="text-center mx-2">
+            <a href="{% url 'procedimento_menu' %}">
+                <p>Procedimentos</p>
+                <img src="{% static 'procedimentos.png' %}" class="img-fluid" alt="Procedimentos"
+                    style="height: 120px;">
+            </a>
+        </div>
+
+
+
+        <div class="text-center mx-2">
+            <a href="{% url 'procedimento_executado_menu' %}">
+                <p>Procedimentos Executados</p>
+                <img src="{% static 'procedimentos_executados.png' %}" class="img-fluid" alt="Procedimentos Executados"
+                    style="height: 120px;">
+            </a>
+        </div>
+
+        <div class="text-center mx-2">
+            <a href="{% url 'orm_sql' %}">
+                <p>Consulta ORM</p>
+                <img src="{% static 'orm.png' %}" class="img-fluid" alt="ORM SQL"
+                    style="height: 100px;">
+            </a>
+        </div>
+
+
+        <div class="text-center mx-2">
+            <a href="{% url 'exportar' %}">
+                <p>Exportar</p>
+                <img src="{% static 'csv.png' %}" class="img-fluid" alt="Exportar CSV"
+                    style="height: 100px;">
+            </a>
+        </div>
+
+
+
+        <div class="text-center mx-2">
+            <a href="{% url 'logout' %}">
+                <p>Sair</p>
+                <img src="{% static 'logout.png' %}" class="img-fluid" alt="Sair" style="height: 100px;">
+            </a>
+        </div>
+
+    </div>
+
+
+
+
+
+    {% block corpo %}{% endblock %}
+
+</body>
+<center>
+    <hr>
+    <h3>{% block rodape %}{% endblock %}</h3>
+    <h4>
+        <img src="{% static 'favicon.ico' %}" class="img-fluid" alt="Teste" width="2%"> 
+        Direitos autorais reservados
+        <img src="{% static 'favicon.ico' %}" class="img-fluid" alt="Teste" width="2%">
+        <p>Última atualização: {% now "d/m/Y H:i:s" %}</p>
+        
+
+    </h4>
+</center>
+
+</html>

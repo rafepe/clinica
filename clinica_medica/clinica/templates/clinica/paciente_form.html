@@ -1,0 +1,58 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<!doctype html>
+<html>
+
+<head>
+    <title>Form de Pacientes</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <img src="{% static 'pacientes.png' %}" class="img-fluid" alt="Pacientes" width="15%">
+            <br><br>
+            <h2>Cadastro Paciente</h2>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12">
+                        {% bootstrap_field form.nome placeholder='Digite aqui o Nome' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-4 col-sm-6">
+                        {% bootstrap_field form.cpf placeholder='Digite aqui o CPF' style='height:15px;' %}
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        {% bootstrap_field form.nascimento placeholder='Data de Nascimento' type="date" style='height:15px;' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-4 col-sm-6">
+                        {% bootstrap_field form.email placeholder='Digite aqui o E-mail' %}
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        {% bootstrap_field form.celular placeholder='Digite aqui o Celular' %}
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

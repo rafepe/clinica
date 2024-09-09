@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load render_table from django_tables2 %}
+
+{% block titulo %}ORM{% endblock %}
+{% block corpo %}
+<body>
+    <h2>Funcionários que também são Pacientes (mesmo CPF)</h2>
+    <br> SELECT f.nome, f.cpf
+    <br> FROM funcionario f
+    <br> WHERE f.cpf IN (SELECT p.cpf FROM paciente p);
+
+    <ul>
+        {% for funcionario in funcionarios_pacientes %}
+            <li>{{ funcionario.nome }} - CPF: {{ funcionario.cpf }}</li>
+        {% empty %}
+            <li>Nenhum funcionário é paciente.</li>
+        {% endfor %}
+    </ul>
+
+    <hr><h2>Procedimento com Maior Valor</h2>
+
+    {% if procedimento_mais_caro %}
+        <p>Nome: {{ procedimento_mais_caro.nome }}</p>
+        <p>Valor: R$ {{ procedimento_mais_caro.valor }}</p>
+    {% else %}
+        <p>Nenhum procedimento encontrado.</p>
+    {% endif %}
+    
+    <hr><h2>Funcionário com Maior Salário</h2>
+
+    {% if funcionario_maior_salario %}
+        <p>Nome: {{ funcionario_maior_salario.nome }}</p>
+        <p>Valor: R$ {{ funcionario_maior_salario.salario }}</p>
+    {% else %}
+        <p>Nenhum funcionário encontrado.</p>
+    {% endif %}
+
+    
+    <hr><h2>Funcionário com Salário Maior que 3500 e Menor que 5500</h2>
+    <ul>
+        {% for funcionario in funcionarios_mais_que %}
+            <li>{{ funcionario.nome }} (CPF: {{ funcionario.salario }})</li>
+        {% empty %}
+            <li>Nenhum funcionário ganha mais que 3500 e menos que 5500.</li>
+        {% endfor %}
+    </ul>
+    
+
+</body>
+{% endblock %}
+{% block rodape %}<h4>{{ data|date:"SHORT_DATE_FORMAT" }}</h4>
+{% endblock %}

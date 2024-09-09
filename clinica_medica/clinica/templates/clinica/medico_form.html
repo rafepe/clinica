@@ -1,0 +1,58 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<!doctype html>
+<html>
+
+<head>
+    <title>Form de Médicos</title>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="text-center" style="width: 100%;">
+            <img src="{% static 'medicos.png' %}" class="img-fluid mb-3" alt="Equipe de Médicos" width="15%">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12">
+                        {% bootstrap_field form.nome placeholder='Digite aqui o Nome Completo' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-4 col-sm-6">
+                        {% bootstrap_field form.celular placeholder='Celular' %}
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        {% bootstrap_field form.email placeholder='email@dominio.com' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-2 col-sm-2">
+                        {% bootstrap_field form.crm placeholder='CRM' %}
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        {% bootstrap_field form.crm_uf placeholder='CRM_UF' %}
+                    </div>
+                    <div class="col-md-4 col-sm-5">
+                        {% bootstrap_field form.funcao placeholder='Função' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

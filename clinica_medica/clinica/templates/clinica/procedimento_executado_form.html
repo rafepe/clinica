@@ -1,0 +1,70 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<!doctype html>
+<html>
+
+<head>
+    <title>Form de Procedimentos Executados</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <img src="{% static 'procedimentos_executados.png' %}" class="img-fluid" alt="Procedimentos Executados"
+                width="15%">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {% bootstrap_field form.procedimento placeholder='Digite aqui o Nome do Procedimento' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {% bootstrap_field form.data placeholder='' style='height:15px;' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {% bootstrap_field form.paciente placeholder='' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {% bootstrap_field form.medico placeholder='' %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {% bootstrap_field form.obs placeholder='' %}
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="line-height: 1;">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {% bootstrap_field form.quantidade placeholder='' %}
+                    </div>
+                </div>
+
+        </div>
+
+
+
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
